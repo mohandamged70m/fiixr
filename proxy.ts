@@ -1,27 +1,19 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware } from "@clerk/nextjs/server";
 import createMiddleware from "next-intl/middleware";
+import { NextRequest } from "next/server";
 import { routing } from "./src/i18n/routing";
 
-const intlMiddleware = createMiddleware(routing);
+const intl = createMiddleware(routing);
+const clerk = clerkMiddleware();
 
-const isPublicRoute = createRouteMatcher((req) => {
-  const { pathname } = req.nextUrl;
-  return (
-    pathname === "/" ||
-    pathname.startsWith("/en") ||
-    pathname.startsWith("/ar") ||
-    pathname.startsWith("/api/") ||
-    pathname.startsWith("/sign-")
-  );
-});
-
-export default clerkMiddleware(async (auth, req) => {
-  if (!isPublicRoute(req)) {
-    await auth.protect();
-  }
-
-  return intlMiddleware(req);
-});
+export default async function middleware(
+  req: NextRequest,
+  event: Parameters<typeof clerk>[1]
+) {
+  const res = await clerk(req, event);
+  if (res) return res;
+  return intl(req);
+}
 
 export const config = {
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
