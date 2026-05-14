@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
     const evt = await verifyWebhook(req);
 
     if (evt.type === "user.created") {
-      // TODO: sync user to Supabase via Prisma
+      // TODO: handle user creation
       console.log("User created:", evt.data.id);
     }
 
