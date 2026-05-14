@@ -4,7 +4,7 @@ const steps = [
     label: "paste",
     title: "Paste your error",
     accent: "error",
-    desc: "Copy the error from your terminal, IDE, or CI log. Fixr automatically detects the language, framework, and root cause — no configuration needed.",
+    desc: "Paste the error into the Fixr web app. It automatically detects the language, framework, and root cause — no configuration needed. (CLI &amp; IDE paste coming soon.)",
     outcome: "You know exactly what went wrong.",
   },
   {

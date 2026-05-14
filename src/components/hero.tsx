@@ -14,8 +14,11 @@ export default function Hero() {
 
           <p className="mx-auto mt-5 max-w-xl text-base font-light leading-relaxed text-zinc-500 md:text-lg">
             Fixr uses AI to instantly explain and fix errors in any language.
-            Terminal, IDE, or CI — paste the error, get the fix. In seconds, not{" "}
+            Paste the error in your browser, get the fix. In seconds, not{" "}
             <span className="italic">hours</span>.
+          </p>
+          <p className="mt-2 text-xs text-zinc-400">
+            Web app now · CLI &amp; IDE extensions <span className="font-medium text-accent">coming soon</span>
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

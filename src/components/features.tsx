@@ -37,7 +37,7 @@ const features = [
   {
     id: "03",
     title: "Your tools, zero friction",
-    desc: "VS Code extension, CLI, CI integration, and GitHub Action. Fixr fits into your workflow — not the other way around.",
+    desc: "Starts in the browser with a full-featured web app. CLI and IDE extensions coming soon — so Fixr fits your workflow, not the other way around.",
     ring: (
       <svg
         viewBox="0 0 32 32"
@@ -151,7 +151,7 @@ export default function Features() {
             </div>
           ))}
 
-          <div className="rounded-2xl border border-zinc-200/80 bg-white p-8">
+            <div className="rounded-2xl border border-zinc-200/80 bg-white p-8">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 text-zinc-700">
                 <svg
@@ -171,33 +171,35 @@ export default function Features() {
               Your tools, zero friction
             </h3>
             <p className="mt-2 text-sm font-light leading-relaxed text-zinc-500">
-              VS Code extension, CLI, CI integration, and GitHub Action. Fixr
-              fits into your workflow — not the other way around.
+              Starts in the browser with a full-featured web app. CLI and IDE
+              extensions coming soon — so Fixr fits your workflow, not the other
+              way around.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {[
-                "VS Code",
-                "Terminal",
-                "GitHub",
-                "GitLab",
-                "Slack",
-                "Discord",
-              ].map((tool) => (
-                <span
-                  key={tool}
-                  className="rounded-full border border-zinc-200 px-3 py-1 font-mono text-xs text-zinc-500"
-                >
-                  {tool}
-                </span>
-              ))}
+              <span className="rounded-full border border-zinc-900 bg-zinc-900 px-3 py-1 font-mono text-xs text-white">
+                Web app
+              </span>
+              {["VS Code", "Terminal", "JetBrains", "GitHub", "Slack"].map(
+                (tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-full border border-zinc-200 px-3 py-1 font-mono text-xs text-zinc-400"
+                  >
+                    {tool}
+                    <span className="ml-1 text-[10px] text-zinc-400">
+                      (soon)
+                    </span>
+                  </span>
+                ),
+              )}
             </div>
             <div className="mt-4 rounded-lg border border-zinc-100 bg-zinc-50/50 px-4 py-3">
               <div className="flex items-center gap-2 text-xs">
                 <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
                 <span className="font-mono font-medium text-zinc-600">
-                  fixr.vsix
+                  fixr.app
                 </span>
-                <span className="text-zinc-400">· Installed</span>
+                <span className="text-zinc-400">· Live now</span>
               </div>
             </div>
           </div>
