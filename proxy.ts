@@ -4,14 +4,14 @@ import { routing } from "./src/i18n/routing";
 
 const intlMiddleware = createMiddleware(routing);
 
-const isPublicRoute = createRouteMatcher([
-  "/",
-  "/sign-in(.*)",
-  "/sign-up(.*)",
-  "/api(.*)",
-  "/ar(.*)",
-  "/en(.*)",
-]);
+const isPublicRoute = createRouteMatcher((req) => {
+  const { pathname } = req.nextUrl;
+  return (
+    pathname === "/" ||
+    /^\/(en|ar)?\/?sign-(in|up)(\/.*)?$/.test(pathname) ||
+    pathname.startsWith("/api/")
+  );
+});
 
 export default clerkMiddleware(async (auth, req) => {
   if (!isPublicRoute(req)) {

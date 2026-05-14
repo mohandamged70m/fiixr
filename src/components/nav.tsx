@@ -9,8 +9,7 @@ import { useState, useEffect } from "react";
 
 export default function Nav() {
   const t = useTranslations("nav");
-  const theme = useTranslations("theme");
-  const locale = useTranslations("locale");
+  const localeLabels = useTranslations("locale");
   const { theme: currentTheme, setTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
@@ -58,7 +57,7 @@ export default function Nav() {
             onPress={toggleLocale}
             className="min-w-0 px-2 text-sm text-zinc-500"
           >
-            {currentLocale === "en" ? locale("ar") : locale("en")}
+            {currentLocale === "en" ? localeLabels("ar") : localeLabels("en")}
           </Button>
 
           {mounted && (
