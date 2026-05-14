@@ -8,8 +8,10 @@ const isPublicRoute = createRouteMatcher((req) => {
   const { pathname } = req.nextUrl;
   return (
     pathname === "/" ||
-    /^\/(en|ar)?\/?sign-(in|up)(\/.*)?$/.test(pathname) ||
-    pathname.startsWith("/api/")
+    pathname.startsWith("/en") ||
+    pathname.startsWith("/ar") ||
+    pathname.startsWith("/api/") ||
+    pathname.startsWith("/sign-")
   );
 });
 
