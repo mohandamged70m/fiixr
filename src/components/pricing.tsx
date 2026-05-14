@@ -25,19 +25,23 @@ const plans = [
   },
 ];
 
-export default function Pricing() {
+import { getTranslations } from "next-intl/server";
+
+export default async function Pricing() {
+  const t = await getTranslations("pricing");
+
   return (
-    <section id="pricing" className="bg-warm py-18 md:py-20">
+    <section id="pricing" className="bg-warm py-18 md:py-20 dark:bg-dark-bg">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-xl text-center">
           <span className="font-mono text-xs tracking-widest text-zinc-400">
-            PRICING
+            {t("badge")}
           </span>
-          <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight md:text-4xl">
-            Simple, transparent pricing
+          <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight md:text-4xl dark:text-white">
+            {t("title")}
           </h2>
-          <p className="mt-3 text-sm font-light leading-relaxed text-zinc-500">
-            Start free. Upgrade when you outgrow it.
+          <p className="mt-3 text-sm font-light leading-relaxed text-zinc-500 dark:text-zinc-400">
+            {t("subtitle")}
           </p>
         </div>
 

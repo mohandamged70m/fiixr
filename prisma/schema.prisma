@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id         String   @id
+  email      String?
+  name       String?
+  imageUrl   String?
+  clerkId    String   @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  errors     Error[]
+  fixes      Fix[]
+  subscription Subscription?
+}
+
+model Error {
+  id        String   @id @default(cuid())
+  code      String
+  message   String
+  language  String
+  stack     String?
+  source    String   @default("web")
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+
+  fixes     Fix[]
+}
+
+model Fix {
+  id        String   @id @default(cuid())
+  explanation String
+  fixCode   String
+  language  String
+  confidence Float?
+  errorId   String
+  error     Error    @relation(fields: [errorId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Subscription {
+  id         String   @id @default(cuid())
+  plan       String   @default("free")
+  stripeId   String?  @unique
+  status     String   @default("active")
+  userId     String   @unique
+  user       User     @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

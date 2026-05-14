@@ -35,7 +35,7 @@ const reviews = [
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="bg-warm py-18 md:py-20">
+    <section id="reviews" className="bg-warm py-18 md:py-20 dark:bg-dark-bg">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-xl text-center">
           <span className="font-mono text-xs tracking-widest text-zinc-400">

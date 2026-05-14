@@ -1,6 +1,6 @@
 export default function CTASection() {
   return (
-    <section className="bg-white py-20 md:py-24">
+    <section className="bg-white py-20 md:py-24 dark:bg-dark-bg">
       <div className="mx-auto max-w-3xl px-6 text-center">
         <h2 className="font-serif text-3xl leading-tight tracking-tight md:text-4xl">
           Stop losing hours to errors you don&apos;t{" "}

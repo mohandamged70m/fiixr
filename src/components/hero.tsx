@@ -1,42 +1,47 @@
-export default function Hero() {
+import { getTranslations } from "next-intl/server";
+
+export default async function Hero() {
+  const t = await getTranslations("hero");
+
   return (
-    <section className="relative overflow-hidden bg-white pb-20 pt-16 md:pb-28 md:pt-20">
+    <section className="relative overflow-hidden bg-white pb-20 pt-16 md:pb-28 md:pt-20 dark:bg-dark-bg">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="mb-6 inline-block rounded-full border border-zinc-200 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-zinc-500">
-            Now in public beta
+          <span className="mb-6 inline-block rounded-full border border-zinc-200 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
+            {t("badge")}
           </span>
 
-          <h1 className="font-serif text-4xl leading-tight tracking-tight md:text-5xl lg:text-[3.25rem]">
-            Stop losing hours to errors you don&apos;t{" "}
-            <span className="italic">understand</span>
+          <h1 className="font-serif text-4xl leading-tight tracking-tight md:text-5xl lg:text-[3.25rem] dark:text-white">
+            {t.rich("title", {
+              italic: (chunks) => <span className="italic">{chunks}</span>,
+            })}
           </h1>
 
-          <p className="mx-auto mt-5 max-w-xl text-base font-light leading-relaxed text-zinc-500 md:text-lg">
-            Fixr uses AI to instantly explain and fix errors in any language.
-            Paste the error in your browser, get the fix. In seconds, not{" "}
-            <span className="italic">hours</span>.
+          <p className="mx-auto mt-5 max-w-xl text-base font-light leading-relaxed text-zinc-500 md:text-lg dark:text-zinc-400">
+            {t.rich("subtitle", {
+              italic: (chunks) => <span className="italic">{chunks}</span>,
+            })}
           </p>
-          <p className="mt-2 text-xs text-zinc-400">
-            Web app now · CLI &amp; IDE extensions <span className="font-medium text-accent">coming soon</span>
+          <p className="mt-2 text-xs text-zinc-400 dark:text-zinc-500">
+            {t("comingSoon")}
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="#"
-              className="inline-flex h-11 w-full items-center justify-center rounded-full bg-zinc-900 px-6 text-sm font-medium text-white transition-colors hover:bg-zinc-800 sm:w-auto"
+              href="/sign-up"
+              className="inline-flex h-11 w-full items-center justify-center rounded-full bg-zinc-900 px-6 text-sm font-medium text-white transition-colors hover:bg-zinc-800 sm:w-auto dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
-              Get early access
+              {t("cta")}
             </a>
             <a
               href="#how-it-works"
-              className="inline-flex h-11 w-full items-center justify-center rounded-full border border-zinc-200 px-6 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 sm:w-auto"
+              className="inline-flex h-11 w-full items-center justify-center rounded-full border border-zinc-200 px-6 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 sm:w-auto dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
             >
-              See how it works
+              {t("seeHow")}
             </a>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-3 text-sm text-zinc-400">
+          <div className="mt-8 flex items-center justify-center gap-3 text-sm text-zinc-400 dark:text-zinc-500">
             <div className="flex -space-x-2">
               {["#7c3aed", "#0d9488", "#e11d48", "#2563eb"].map(
                 (color, i) => (
@@ -50,15 +55,20 @@ export default function Hero() {
                 ),
               )}
             </div>
-            <span className="text-zinc-400">
-              Loved by developers at{" "}
-              <span className="font-medium text-zinc-600">1,200+</span> teams
+            <span className="text-zinc-400 dark:text-zinc-500">
+              {t.rich("lovedBy", {
+                count: () => (
+                  <span className="font-medium text-zinc-600 dark:text-zinc-300">
+                    1,200+
+                  </span>
+                ),
+              })}
             </span>
           </div>
         </div>
 
         <div className="mx-auto mt-14 max-w-4xl">
-          <div className="overflow-hidden rounded-xl border border-zinc-200 bg-[#0a0a0f] shadow-2xl">
+          <div className="overflow-hidden rounded-xl border border-zinc-200 bg-[#0a0a0f] shadow-2xl dark:border-zinc-700">
             <div className="flex items-center gap-1.5 border-b border-zinc-800 px-4 py-3">
               <span className="inline-block h-3 w-3 rounded-full bg-zinc-600" />
               <span className="inline-block h-3 w-3 rounded-full bg-zinc-600" />

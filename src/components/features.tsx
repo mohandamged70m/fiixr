@@ -68,20 +68,23 @@ const features = [
   },
 ];
 
-export default function Features() {
+import { getTranslations } from "next-intl/server";
+
+export default async function Features() {
+  const t = await getTranslations("features");
+
   return (
-    <section id="features" className="bg-light-warm py-18 md:py-20">
+    <section id="features" className="bg-light-warm py-18 md:py-20 dark:bg-dark-bg">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-xl text-center">
           <span className="font-mono text-xs tracking-widest text-zinc-400">
-            FEATURES
+            {t("badge")}
           </span>
-          <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight md:text-4xl">
-            More than an error linter
+          <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight md:text-4xl dark:text-white">
+            {t("title")}
           </h2>
-          <p className="mt-3 text-sm font-light leading-relaxed text-zinc-500">
-            Fixr doesn&apos;t just surface errors — it explains them, fixes
-            them, and teaches you why they happened.
+          <p className="mt-3 text-sm font-light leading-relaxed text-zinc-500 dark:text-zinc-400">
+            {t("subtitle")}
           </p>
         </div>
 

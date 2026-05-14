@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "features": "Features",
+    "howItWorks": "How it works",
+    "reviews": "Reviews",
+    "pricing": "Pricing",
+    "signIn": "Sign in",
+    "getEarlyAccess": "Get early access"
+  },
+  "hero": {
+    "badge": "Now in public beta",
+    "title": "Stop losing hours to errors you don't understand",
+    "subtitle": "Fixr uses AI to instantly explain and fix errors in any language. Paste the error in your browser, get the fix. In seconds, not hours.",
+    "comingSoon": "Web app now · CLI & IDE extensions coming soon",
+    "cta": "Get early access",
+    "seeHow": "See how it works",
+    "lovedBy": "Loved by developers at {count} teams"
+  },
+  "features": {
+    "badge": "FEATURES",
+    "title": "More than an error linter",
+    "subtitle": "Fixr doesn't just surface errors — it explains them, fixes them, and teaches you why they happened."
+  },
+  "pricing": {
+    "badge": "PRICING",
+    "title": "Simple, transparent pricing",
+    "subtitle": "Start free. Upgrade when you outgrow it.",
+    "free": {
+      "name": "Free",
+      "desc": "For solo devs and occasional errors.",
+      "features": ["100 errors / month", "All languages", "Web app", "Basic explanations", "Community support"],
+      "cta": "Get started"
+    },
+    "pro": {
+      "name": "Pro",
+      "desc": "For professional developers who ship daily.",
+      "features": ["Unlimited errors", "All languages + frameworks", "Web app · IDE (soon)", "Deep AI explanations", "Priority support", "Team patches"],
+      "cta": "Start free trial"
+    },
+    "team": {
+      "name": "Team",
+      "desc": "For teams that need shared context and insights.",
+      "features": ["Everything in Pro", "Shared error dashboard", "Team analytics", "Custom integrations", "Dedicated support", "SSO"],
+      "cta": "Contact sales"
+    },
+    "mostPopular": "Most popular",
+    "perMonth": "/mo"
+  },
+  "footer": {
+    "features": "Features",
+    "howItWorks": "How it works",
+    "reviews": "Reviews",
+    "pricing": "Pricing",
+    "privacy": "Privacy"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "locale": {
+    "en": "English",
+    "ar": "العربية"
+  }
+}
