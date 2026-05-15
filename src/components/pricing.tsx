@@ -25,10 +25,10 @@ const plans = [
   },
 ];
 
-import { getTranslations } from "next-intl/server";
+import { createTranslator } from "@/i18n/server";
 
-export default async function Pricing() {
-  const t = await getTranslations("pricing");
+export default async function Pricing({ locale }: { locale: string }) {
+  const t = createTranslator(locale, "pricing");
 
   return (
     <section id="pricing" className="bg-warm py-18 md:py-20 dark:bg-dark-bg">

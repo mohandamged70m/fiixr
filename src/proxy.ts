@@ -12,7 +12,7 @@ function getLocale(request: NextRequest): string {
 
 const clerk = clerkMiddleware();
 
-export default async function middleware(
+export default async function proxy(
   req: NextRequest,
   event: Parameters<typeof clerk>[1]
 ) {
@@ -30,8 +30,8 @@ export default async function middleware(
 
   const locale = getLocale(req);
   const url = req.nextUrl.clone();
-  url.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(url);
+  url.pathname = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
+  return NextResponse.rewrite(url);
 }
 
 export const config = {

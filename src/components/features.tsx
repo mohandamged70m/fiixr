@@ -68,10 +68,10 @@ const features = [
   },
 ];
 
-import { getTranslations } from "next-intl/server";
+import { createTranslator } from "@/i18n/server";
 
-export default async function Features() {
-  const t = await getTranslations("features");
+export default async function Features({ locale }: { locale: string }) {
+  const t = createTranslator(locale, "features");
 
   return (
     <section id="features" className="bg-light-warm py-18 md:py-20 dark:bg-dark-bg">

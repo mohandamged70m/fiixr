@@ -1,7 +1,7 @@
-import { getTranslations } from "next-intl/server";
+import { createTranslator } from "@/i18n/server";
 
-export default async function Hero() {
-  const t = await getTranslations("hero");
+export default async function Hero({ locale }: { locale: string }) {
+  const t = createTranslator(locale, "hero");
 
   return (
     <section className="relative overflow-hidden bg-white pb-20 pt-16 md:pb-28 md:pt-20 dark:bg-dark-bg">

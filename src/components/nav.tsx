@@ -1,9 +1,8 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "use-intl";
 import { useTheme } from "next-themes";
-import { usePathname, useRouter } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@heroui/react";
 import { useState, useEffect } from "react";
 
@@ -22,7 +21,8 @@ export default function Nav() {
 
   const toggleLocale = () => {
     const next = currentLocale === "en" ? "ar" : "en";
-    router.replace({ pathname }, { locale: next });
+    const path = pathname.replace(/^\/[a-z]{2}/, `/${next}`);
+    router.replace(path);
   };
 
   return (

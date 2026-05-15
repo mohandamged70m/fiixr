@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import I18nProvider from "@/components/i18n-provider";
 import { DM_Serif_Display, DM_Sans, DM_Mono } from "next/font/google";
+import enMessages from "@/messages/en.json";
+import arMessages from "@/messages/ar.json";
 
 const dmSerif = DM_Serif_Display({
   variable: "--font-dm-serif",
@@ -37,7 +38,7 @@ export default async function LocaleLayout({
 
   if (!locales.includes(locale)) notFound();
 
-  const messages = await getMessages({ locale });
+  const messages = locale === "ar" ? arMessages : enMessages;
 
   return (
     <html
@@ -47,9 +48,9 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen font-sans antialiased">
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <I18nProvider locale={locale} messages={messages}>
           {children}
-        </NextIntlClientProvider>
+        </I18nProvider>
       </body>
     </html>
   );

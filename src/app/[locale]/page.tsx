@@ -9,18 +9,24 @@ import Pricing from "@/components/pricing";
 import CTASection from "@/components/cta-section";
 import Footer from "@/components/footer";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
   return (
     <>
       <Nav />
       <main>
-        <Hero />
+        <Hero locale={locale} />
         <TrustBar />
         <Marquee />
-        <Features />
+        <Features locale={locale} />
         <HowItWorks />
         <Reviews />
-        <Pricing />
+        <Pricing locale={locale} />
         <CTASection />
       </main>
       <Footer />
