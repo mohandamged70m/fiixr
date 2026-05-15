@@ -1,57 +1,98 @@
 {
   "nav": {
-    "features": "Features",
-    "howItWorks": "How it works",
-    "reviews": "Reviews",
+    "product": "Product",
     "pricing": "Pricing",
+    "docs": "Docs",
+    "blog": "Blog",
     "signIn": "Sign in",
-    "getEarlyAccess": "Get early access"
+    "startFree": "Start free"
   },
   "hero": {
-    "badge": "Now in public beta",
-    "title": "Stop losing hours to errors you don't understand",
-    "subtitle": "Fixr uses AI to instantly explain and fix errors in any language. Paste the error in your browser, get the fix. In seconds, not hours.",
-    "comingSoon": "Web app now · CLI & IDE extensions coming soon",
-    "cta": "Get early access",
+    "badge": "AI-powered error intelligence · Free to start",
+    "title": "Your errors, explained. Your fixes, ready.",
+    "subtitle": "Paste any error message. Fixr tells you exactly what broke, why it happened, and how to fix it — in seconds.",
+    "cta": "Try free — no account needed",
     "seeHow": "See how it works",
-    "lovedBy": "Loved by developers at {count} teams"
+    "socialProof": "Trusted by 12,000+ developers worldwide"
+  },
+  "trustBar": {
+    "item1": "100 errors/month",
+    "item1Desc": "Free forever, no card required",
+    "item2": "14 seconds",
+    "item2Desc": "Average time from error to fix",
+    "item3": "30+ languages",
+    "item3Desc": "Python, JS, Rust, Go, Java and more"
   },
   "features": {
-    "badge": "FEATURES",
-    "title": "More than an error linter",
-    "subtitle": "Fixr doesn't just surface errors — it explains them, fixes them, and teaches you why they happened."
+    "badge": "What Fixr does",
+    "title": "Not a search engine. A debugging partner.",
+    "subtitle": "Most tools tell you what the error is. Fixr tells you why it happened and exactly what to do next.",
+    "f1Title": "Understand the real problem",
+    "f1Body": "Fixr doesn't just name the error type. It traces back through your stack, identifies the exact line and data flow that caused it, and explains it in plain English — with a confidence score so you know how certain the analysis is.",
+    "f2Title": "A fix you can actually apply",
+    "f2Body": "No vague suggestions. Fixr gives you numbered steps with copy-paste code snippets, targeted to your exact error and file. Apply it, move on.",
+    "f3Title": "Works with your entire stack",
+    "f3Body": "Python, JavaScript, TypeScript, Rust, Go, Java, Swift, Ruby, SQL, CSS and 20+ more. Paste any error from any language and Fixr handles it.",
+    "f4Title": "Stay in your terminal",
+    "f4Body": "Upgrade to Pro and bring Fixr into your workflow. Pipe errors directly from your build output, analyze log files, and get explanations without leaving your editor."
+  },
+  "howItWorks": {
+    "badge": "How it works",
+    "title": "From error to fix in three steps",
+    "s1Title": "Drop in your error",
+    "s1Body": "Copy any error message, stack trace, or build output and paste it into Fixr. No formatting required. It works with messy, truncated, or minified output too.",
+    "s2Title": "Fixr finds the cause",
+    "s2Body": "Our AI reads your stack trace, identifies the root cause, and maps it back to your specific file and line. Not a generic answer — an explanation written for your exact error.",
+    "s3Title": "Apply and move on",
+    "s3Body": "You get a plain-English explanation of what happened, why it happened, and a step-by-step fix with code. Copy it, apply it, ship."
   },
   "pricing": {
-    "badge": "PRICING",
-    "title": "Simple, transparent pricing",
-    "subtitle": "Start free. Upgrade when you outgrow it.",
-    "free": {
-      "name": "Free",
-      "desc": "For solo devs and occasional errors.",
-      "features": ["100 errors / month", "All languages", "Web app", "Basic explanations", "Community support"],
-      "cta": "Get started"
-    },
-    "pro": {
-      "name": "Pro",
-      "desc": "For professional developers who ship daily.",
-      "features": ["Unlimited errors", "All languages + frameworks", "Web app · IDE (soon)", "Deep AI explanations", "Priority support", "Team patches"],
-      "cta": "Start free trial"
-    },
-    "team": {
-      "name": "Team",
-      "desc": "For teams that need shared context and insights.",
-      "features": ["Everything in Pro", "Shared error dashboard", "Team analytics", "Custom integrations", "Dedicated support", "SSO"],
-      "cta": "Contact sales"
-    },
-    "mostPopular": "Most popular",
+    "badge": "Pricing",
+    "title": "Simple pricing. No surprises.",
+    "subtitle": "Start free. Upgrade when you need more.",
+    "freeName": "Free",
+    "freeTagline": "For developers who want to try Fixr",
+    "freeCta": "Start for free",
+    "proName": "Pro",
+    "proTagline": "For developers who debug every day",
+    "proCta": "Start 14-day free trial",
+    "teamName": "Team",
+    "teamTagline": "For engineering teams",
+    "teamCta": "Talk to us",
     "perMonth": "/mo"
   },
+  "reviews": {
+    "badge": "What developers say",
+    "title": "Built for the frustration every developer knows",
+    "r1Quote": "Saved me 45 minutes on a cryptic TypeScript error. The explanation was clearer than anything on Stack Overflow and the fix worked first try.",
+    "r1Name": "Sofia R.",
+    "r1Role": "Frontend Engineer · Lisbon",
+    "r2Quote": "The 'why it happened' section is what makes Fixr different. I actually understand the error now, not just blindly copying a fix.",
+    "r2Name": "James K.",
+    "r2Role": "Full-stack Developer · Berlin",
+    "r3Quote": "Junior devs on my team use it every day. The number of errors they escalate to me has dropped by half. Genuinely impressive.",
+    "r3Name": "Amara M.",
+    "r3Role": "Engineering Lead · Lagos",
+    "r4Quote": "I used it on a Rust lifetime error I had been staring at for two hours. It explained it better than the official Rust docs. Subscribed immediately.",
+    "r4Name": "Luca P.",
+    "r4Role": "Systems Engineer · Milan"
+  },
+  "cta": {
+    "title": "Stop losing hours to errors you don't understand.",
+    "subtitle": "100 free explanations every month. No account required to start. No credit card ever.",
+    "cta": "Try Fixr free",
+    "secondary": "Read the docs",
+    "microcopy": "Free forever · No credit card · Works in your browser"
+  },
   "footer": {
-    "features": "Features",
-    "howItWorks": "How it works",
-    "reviews": "Reviews",
+    "product": "Product",
     "pricing": "Pricing",
-    "privacy": "Privacy"
+    "docs": "Docs",
+    "blog": "Blog",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "status": "Status",
+    "tagline": "Built for developers who ship."
   },
   "theme": {
     "light": "Light",

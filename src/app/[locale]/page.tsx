@@ -21,13 +21,13 @@ export default async function Home({
       <Nav />
       <main>
         <Hero locale={locale} />
-        <TrustBar />
+        <TrustBar locale={locale} />
         <Marquee />
         <Features locale={locale} />
-        <HowItWorks />
-        <Reviews />
+        <HowItWorks locale={locale} />
+        <Reviews locale={locale} />
         <Pricing locale={locale} />
-        <CTASection />
+        <CTASection locale={locale} />
       </main>
       <Footer />
     </>

@@ -1,20 +1,14 @@
 const items = [
   ["Python", "TypeError"],
+  ["JavaScript", "ReferenceError"],
+  ["TypeScript", "TS2322"],
   ["Rust", "borrow checker"],
-  ["TypeScript", "union mismatch"],
   ["Go", "nil pointer"],
-  ["React", "hook rule"],
-  ["JavaScript", "undefined"],
+  ["React", "hook errors"],
   ["Java", "NullPointerException"],
-  ["C++", "segfault"],
+  ["SQL", "syntax errors"],
+  ["CSS", "layout bugs"],
   ["Ruby", "NoMethodError"],
-  ["Swift", "optional unwrap"],
-  ["Kotlin", "null safety"],
-  ["PHP", "TypeError"],
-  ["C#", "NullReferenceException"],
-  ["Zig", "alloc error"],
-  ["Elixir", "match error"],
-  ["Shell", "command not found"],
 ];
 
 export default function Marquee() {

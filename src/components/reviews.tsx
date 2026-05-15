@@ -1,48 +1,42 @@
-const reviews = [
-  {
-    quote:
-      "Fixr understood what our Rust code was trying to do and fixed a borrow checker issue in seconds. I've been fighting that error for two days.",
-    initials: "AK",
-    color: "#7c3aed",
-    role: "Backend eng · Berlin",
-    stars: 5,
-  },
-  {
-    quote:
-      "I plugged in a 200-line TypeScript error and Fixr gave me the root cause and fix before I finished my coffee. Unreal.",
-    initials: "MR",
-    color: "#0d9488",
-    role: "Full-stack eng · Lisbon",
-    stars: 5,
-  },
-  {
-    quote:
-      "Our CI pipeline has gone from 'debug for an hour' to 'fixr tells us exactly what's wrong.' Cut our rollout time in half.",
-    initials: "CL",
-    color: "#e11d48",
-    role: "DevOps lead · Toronto",
-    stars: 5,
-  },
-  {
-    quote:
-      "The explanations are so good I actually understand Python internals now. It's like having a senior dev sitting next to you.",
-    initials: "SN",
-    color: "#2563eb",
-    role: "Junior dev · São Paulo",
-    stars: 5,
-  },
-];
+import { createTranslator } from "@/i18n/server";
 
-export default function Reviews() {
+const reviewColors = ["#7c3aed", "#0d9488", "#e11d48", "#2563eb"];
+
+export default async function Reviews({ locale }: { locale: string }) {
+  const t = createTranslator(locale, "reviews");
+
+  const reviews = [
+    {
+      quote: t("r1Quote"),
+      name: t("r1Name"),
+      role: t("r1Role"),
+    },
+    {
+      quote: t("r2Quote"),
+      name: t("r2Name"),
+      role: t("r2Role"),
+    },
+    {
+      quote: t("r3Quote"),
+      name: t("r3Name"),
+      role: t("r3Role"),
+    },
+    {
+      quote: t("r4Quote"),
+      name: t("r4Name"),
+      role: t("r4Role"),
+    },
+  ];
+
   return (
     <section id="reviews" className="bg-warm py-18 md:py-20 dark:bg-dark-bg">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-xl text-center">
           <span className="font-mono text-xs tracking-widest text-zinc-400">
-            REVIEWS
+            {t("badge")}
           </span>
-          <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight md:text-4xl">
-            Loved by the developers who use it
+          <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight md:text-4xl dark:text-white">
+            {t("title")}
           </h2>
         </div>
 
@@ -50,34 +44,21 @@ export default function Reviews() {
           {reviews.map((r, i) => (
             <div
               key={i}
-              className="rounded-2xl border border-zinc-200/60 bg-white p-7"
+              className="rounded-2xl border border-zinc-200/60 bg-white p-7 dark:border-zinc-700 dark:bg-white/[0.03]"
             >
-              <div className="flex gap-1">
-                {Array.from({ length: r.stars }).map((_, s) => (
-                  <span key={s} className="text-accent">
-                    <svg
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      className="h-4 w-4"
-                    >
-                      <path d="M8 1.5l1.96 4.02 4.54.66-3.29 3.2.78 4.52L8 11.73l-4.08 2.17.78-4.52L1.5 6.18l4.54-.66L8 1.5z" />
-                    </svg>
-                  </span>
-                ))}
-              </div>
-              <p className="mt-3 font-serif text-base italic leading-relaxed text-zinc-700">
+              <p className="font-serif text-base italic leading-relaxed text-zinc-700 dark:text-zinc-300">
                 &ldquo;{r.quote}&rdquo;
               </p>
               <div className="mt-4 flex items-center gap-3">
                 <div
                   className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold text-white"
-                  style={{ backgroundColor: r.color }}
+                  style={{ backgroundColor: reviewColors[i] }}
                 >
-                  {r.initials}
+                  {r.name.charAt(0)}
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-zinc-700">
-                    {r.initials}
+                  <div className="text-sm font-medium text-zinc-700 dark:text-zinc-200">
+                    {r.name}
                   </div>
                   <div className="text-xs text-zinc-400">{r.role}</div>
                 </div>

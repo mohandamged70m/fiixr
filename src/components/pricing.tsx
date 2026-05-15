@@ -1,34 +1,55 @@
-const plans = [
-  {
-    name: "Free",
-    price: "0",
-    desc: "For solo devs and occasional errors.",
-    features: ["100 errors / month", "All languages", "Web app", "Basic explanations", "Community support"],
-    cta: "Get started",
-    dark: false,
-  },
-  {
-    name: "Pro",
-    price: "19",
-    desc: "For professional developers who ship daily.",
-    features: ["Unlimited errors", "All languages + frameworks", "Web app · IDE (soon)", "Deep AI explanations", "Priority support", "Team patches"],
-    cta: "Start free trial",
-    dark: true,
-  },
-  {
-    name: "Team",
-    price: "49",
-    desc: "For teams that need shared context and insights.",
-    features: ["Everything in Pro", "Shared error dashboard", "Team analytics", "Custom integrations", "Dedicated support", "SSO"],
-    cta: "Contact sales",
-    dark: false,
-  },
-];
-
 import { createTranslator } from "@/i18n/server";
 
 export default async function Pricing({ locale }: { locale: string }) {
   const t = createTranslator(locale, "pricing");
+
+  const plans = [
+    {
+      name: t("freeName"),
+      price: "0",
+      tagline: t("freeTagline"),
+      features: [
+        "100 error explanations per month",
+        "Web app access",
+        "Root cause + plain-English explanation",
+        "Step-by-step fix with code snippets",
+        "10 languages supported",
+        "No credit card required",
+      ],
+      cta: t("freeCta"),
+      dark: false,
+    },
+    {
+      name: t("proName"),
+      price: "12",
+      tagline: t("proTagline"),
+      features: [
+        "Unlimited error explanations",
+        "Everything in Free",
+        "All 30+ languages",
+        "CLI access — pipe errors from terminal",
+        "VS Code extension",
+        "Error history and search",
+        "Priority support",
+      ],
+      cta: t("proCta"),
+      dark: true,
+    },
+    {
+      name: t("teamName"),
+      price: "39",
+      tagline: t("teamTagline"),
+      features: [
+        "Everything in Pro",
+        "Up to 10 seats",
+        "Shared error library across the team",
+        "Team analytics dashboard",
+        "Dedicated support",
+      ],
+      cta: t("teamCta"),
+      dark: false,
+    },
+  ];
 
   return (
     <section id="pricing" className="bg-warm py-18 md:py-20 dark:bg-dark-bg">
@@ -81,7 +102,7 @@ export default async function Pricing({ locale }: { locale: string }) {
                       plan.dark ? "text-sm text-zinc-400" : "text-sm text-zinc-400"
                     }
                   >
-                    /mo
+                    {t("perMonth")}
                   </span>
                 )}
               </div>
@@ -91,7 +112,7 @@ export default async function Pricing({ locale }: { locale: string }) {
                   plan.dark ? "mt-2 text-sm text-zinc-400" : "mt-2 text-sm text-zinc-400"
                 }
               >
-                {plan.desc}
+                {plan.tagline}
               </p>
 
               <ul className="mt-6 flex-1 space-y-3">

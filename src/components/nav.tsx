@@ -36,17 +36,17 @@ export default function Nav() {
             <span className="inline-block h-2 w-2 rounded-full bg-accent" />
           </a>
           <nav className="hidden items-center gap-6 text-sm font-medium text-zinc-500 md:flex dark:text-zinc-400">
-            <a href="#features" className="hover:text-zinc-900 dark:hover:text-zinc-200">
-              {t("features")}
-            </a>
-            <a href="#how-it-works" className="hover:text-zinc-900 dark:hover:text-zinc-200">
-              {t("howItWorks")}
-            </a>
-            <a href="#reviews" className="hover:text-zinc-900 dark:hover:text-zinc-200">
-              {t("reviews")}
+            <a href="#product" className="hover:text-zinc-900 dark:hover:text-zinc-200">
+              {t("product")}
             </a>
             <a href="#pricing" className="hover:text-zinc-900 dark:hover:text-zinc-200">
               {t("pricing")}
+            </a>
+            <a href="#docs" className="hover:text-zinc-900 dark:hover:text-zinc-200">
+              {t("docs")}
+            </a>
+            <a href="#blog" className="hover:text-zinc-900 dark:hover:text-zinc-200">
+              {t("blog")}
             </a>
           </nav>
         </div>
@@ -91,7 +91,7 @@ export default function Nav() {
             href="/sign-up"
             className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
-            {t("getEarlyAccess")}
+            {t("startFree")}
           </a>
         </div>
       </div>

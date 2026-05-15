@@ -12,18 +12,11 @@ export default async function Hero({ locale }: { locale: string }) {
           </span>
 
           <h1 className="font-serif text-4xl leading-tight tracking-tight md:text-5xl lg:text-[3.25rem] dark:text-white">
-            {t.rich("title", {
-              italic: (chunks) => <span className="italic">{chunks}</span>,
-            })}
+            {t("title")}
           </h1>
 
           <p className="mx-auto mt-5 max-w-xl text-base font-light leading-relaxed text-zinc-500 md:text-lg dark:text-zinc-400">
-            {t.rich("subtitle", {
-              italic: (chunks) => <span className="italic">{chunks}</span>,
-            })}
-          </p>
-          <p className="mt-2 text-xs text-zinc-400 dark:text-zinc-500">
-            {t("comingSoon")}
+            {t("subtitle")}
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -41,29 +34,8 @@ export default async function Hero({ locale }: { locale: string }) {
             </a>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-3 text-sm text-zinc-400 dark:text-zinc-500">
-            <div className="flex -space-x-2">
-              {["#7c3aed", "#0d9488", "#e11d48", "#2563eb"].map(
-                (color, i) => (
-                  <div
-                    key={i}
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[11px] font-bold text-white ring-2 ring-white/50"
-                    style={{ backgroundColor: color }}
-                  >
-                    {String.fromCharCode(65 + i)}
-                  </div>
-                ),
-              )}
-            </div>
-            <span className="text-zinc-400 dark:text-zinc-500">
-              {t.rich("lovedBy", {
-                count: () => (
-                  <span className="font-medium text-zinc-600 dark:text-zinc-300">
-                    1,200+
-                  </span>
-                ),
-              })}
-            </span>
+          <div className="mt-8 text-sm text-zinc-400 dark:text-zinc-500">
+            {t("socialProof")}
           </div>
         </div>
 
