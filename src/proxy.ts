@@ -1,8 +1,10 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
 const locales = ["en", "ar"];
 const defaultLocale = "en";
+
+const isProtectedRoute = createRouteMatcher(["/dashboard(.*)"]);
 
 function getLocale(request: NextRequest): string {
   const acceptLanguage = request.headers.get("accept-language") ?? "";
@@ -10,9 +12,13 @@ function getLocale(request: NextRequest): string {
   return locales.includes(preferred) ? preferred : defaultLocale;
 }
 
-const clerk = clerkMiddleware();
+const clerk = clerkMiddleware(async (auth, req) => {
+  if (isProtectedRoute(req)) {
+    await auth.protect();
+  }
+});
 
-export default async function middleware(
+export default async function proxy(
   req: NextRequest,
   event: Parameters<typeof clerk>[1]
 ) {

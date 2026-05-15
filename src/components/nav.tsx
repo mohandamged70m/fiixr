@@ -3,16 +3,20 @@
 import { useTranslations, useLocale } from "use-intl";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
-import { Button } from "@heroui/react";
+import { useUser, useClerk } from "@clerk/nextjs";
+import { Button, Avatar, Dropdown, DropdownTrigger, DropdownPopover, DropdownMenu, DropdownItem } from "@heroui/react";
 import { useState, useEffect } from "react";
 
 export default function Nav() {
   const t = useTranslations("nav");
+  const authT = useTranslations("auth");
   const localeLabels = useTranslations("locale");
   const { theme: currentTheme, setTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
   const currentLocale = useLocale();
+  const { user, isSignedIn, isLoaded: userLoaded } = useUser();
+  const { signOut } = useClerk();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -81,18 +85,51 @@ export default function Nav() {
             </Button>
           )}
 
-          <a
-            href="/sign-in"
-            className="hidden text-sm font-medium text-zinc-500 hover:text-zinc-900 sm:inline dark:text-zinc-400 dark:hover:text-zinc-200"
-          >
-            {t("signIn")}
-          </a>
-          <a
-            href="/sign-up"
-            className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
-          >
-            {t("startFree")}
-          </a>
+          {userLoaded && isSignedIn && user ? (
+            <Dropdown>
+              <DropdownTrigger>
+                <button className="flex items-center gap-2 rounded-full p-1 pr-3 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                  <Avatar size="sm" className="h-8 w-8">
+                    <Avatar.Image src={user.imageUrl} />
+                    <Avatar.Fallback>
+                      {user.firstName?.[0] || user.emailAddresses[0]?.emailAddress?.[0] || "U"}
+                    </Avatar.Fallback>
+                  </Avatar>
+                  <span className="hidden text-sm font-medium text-zinc-700 sm:inline dark:text-zinc-300">
+                    {user.fullName || user.emailAddresses[0]?.emailAddress}
+                  </span>
+                </button>
+              </DropdownTrigger>
+              <DropdownPopover placement="bottom end">
+                <DropdownMenu>
+                  <DropdownItem onPress={() => router.push("/dashboard")}>
+                    {authT("dashboard")}
+                  </DropdownItem>
+                  <DropdownItem
+                    onPress={() => signOut({ redirectUrl: "/" })}
+                    className="text-red-500"
+                  >
+                    {authT("signOut")}
+                  </DropdownItem>
+                </DropdownMenu>
+              </DropdownPopover>
+            </Dropdown>
+          ) : (
+            <>
+              <a
+                href="/sign-in"
+                className="hidden text-sm font-medium text-zinc-500 hover:text-zinc-900 sm:inline dark:text-zinc-400 dark:hover:text-zinc-200"
+              >
+                {t("signIn")}
+              </a>
+              <a
+                href="/sign-up"
+                className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+              >
+                {t("startFree")}
+              </a>
+            </>
+          )}
         </div>
       </div>
     </header>

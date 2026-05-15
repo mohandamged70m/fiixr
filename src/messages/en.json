@@ -101,5 +101,29 @@
   "locale": {
     "en": "English",
     "ar": "العربية"
+  },
+  "auth": {
+    "signInTitle": "Welcome back",
+    "signInSubtitle": "Sign in to your Fixr account",
+    "signUpTitle": "Create your account",
+    "signUpSubtitle": "Start fixing errors in seconds",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "nameLabel": "Full name",
+    "namePlaceholder": "John Doe",
+    "signInButton": "Sign in",
+    "signUpButton": "Create account",
+    "signingIn": "Signing in…",
+    "signingUp": "Creating account…",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signUpLink": "Sign up",
+    "signInLink": "Sign in",
+    "orContinueWith": "or continue with",
+    "errorDefault": "Something went wrong. Please try again.",
+    "signOut": "Sign out",
+    "dashboard": "Dashboard"
   }
 }

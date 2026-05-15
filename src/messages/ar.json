@@ -60,5 +60,29 @@
   "locale": {
     "en": "English",
     "ar": "العربية"
+  },
+  "auth": {
+    "signInTitle": "مرحباً بعودتك",
+    "signInSubtitle": "تسجيل الدخول إلى حسابك في Fixr",
+    "signUpTitle": "إنشاء حسابك",
+    "signUpSubtitle": "ابدأ بإصلاح الأخطاء في ثوانٍ",
+    "emailLabel": "البريد الإلكتروني",
+    "emailPlaceholder": "you@example.com",
+    "passwordLabel": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور",
+    "nameLabel": "الاسم الكامل",
+    "namePlaceholder": "John Doe",
+    "signInButton": "تسجيل الدخول",
+    "signUpButton": "إنشاء حساب",
+    "signingIn": "جارٍ تسجيل الدخول…",
+    "signingUp": "جارٍ إنشاء الحساب…",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "signUpLink": "إنشاء حساب",
+    "signInLink": "تسجيل الدخول",
+    "orContinueWith": "أو عبر",
+    "errorDefault": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+    "signOut": "تسجيل الخروج",
+    "dashboard": "لوحة التحكم"
   }
 }
