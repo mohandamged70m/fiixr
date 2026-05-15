@@ -48,7 +48,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen font-sans antialiased">
-        <I18nProvider locale={locale} messages={messages}>
+        <I18nProvider locale={locale} messages={messages} timeZone="UTC">
           {children}
         </I18nProvider>
       </body>
