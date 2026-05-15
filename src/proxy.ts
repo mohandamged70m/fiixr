@@ -31,6 +31,12 @@ export default async function proxy(
     return NextResponse.next();
   }
 
+  const clerkResponse = await clerk(req, event);
+
+  if (clerkResponse && clerkResponse.status >= 300 && clerkResponse.status < 400) {
+    return clerkResponse;
+  }
+
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
@@ -39,10 +45,18 @@ export default async function proxy(
     const locale = getLocale(req);
     const url = req.nextUrl.clone();
     url.pathname = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
-    return NextResponse.rewrite(url);
+    const rewrite = NextResponse.rewrite(url);
+
+    if (clerkResponse) {
+      clerkResponse.headers.forEach((value, key) => {
+        rewrite.headers.set(key, value);
+      });
+    }
+
+    return rewrite;
   }
 
-  return clerk(req, event) ?? NextResponse.next();
+  return clerkResponse ?? NextResponse.next();
 }
 
 export const config = {
