@@ -4,7 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 const locales = ["en", "ar"];
 const defaultLocale = "en";
 
-const isProtectedRoute = createRouteMatcher(["/dashboard(.*)"]);
+const isProtectedRoute = createRouteMatcher([
+  "/dashboard(.*)",
+  "/(en|ar)/dashboard(.*)",
+]);
 
 function getLocale(request: NextRequest): string {
   const acceptLanguage = request.headers.get("accept-language") ?? "";
