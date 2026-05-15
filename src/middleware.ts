@@ -12,7 +12,7 @@ function getLocale(request: NextRequest): string {
 
 const clerk = clerkMiddleware();
 
-export default async function proxy(
+export default async function middleware(
   req: NextRequest,
   event: Parameters<typeof clerk>[1]
 ) {
