@@ -31,33 +31,18 @@ export default async function proxy(
     return NextResponse.next();
   }
 
-  const clerkResponse = await clerk(req, event);
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
 
-  if (clerkResponse) {
-    if (clerkResponse.status >= 300 && clerkResponse.status < 400) {
-      return clerkResponse;
-    }
-
-    const pathnameHasLocale = locales.some(
-      (locale) =>
-        pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-    );
-
-    if (pathnameHasLocale) return clerkResponse;
+  if (!pathnameHasLocale) {
+    const locale = getLocale(req);
+    const url = req.nextUrl.clone();
+    url.pathname = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
+    return NextResponse.rewrite(url);
   }
 
-  const locale = getLocale(req);
-  const url = req.nextUrl.clone();
-  url.pathname = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
-  const rewrite = NextResponse.rewrite(url);
-
-  if (clerkResponse) {
-    clerkResponse.headers.forEach((value, key) => {
-      rewrite.headers.set(key, value);
-    });
-  }
-
-  return rewrite;
+  return clerk(req, event) ?? NextResponse.next();
 }
 
 export const config = {
