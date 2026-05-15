@@ -1,18 +1,37 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
-import createMiddleware from "next-intl/middleware";
-import { NextRequest } from "next/server";
-import { routing } from "./src/i18n/routing";
+import { NextRequest, NextResponse } from "next/server";
 
-const intl = createMiddleware(routing);
+const locales = ["en", "ar"];
+const defaultLocale = "en";
+
+function getLocale(request: NextRequest): string {
+  const acceptLanguage = request.headers.get("accept-language") ?? "";
+  const preferred = acceptLanguage.split(",")[0]?.split("-")[0] ?? "";
+  return locales.includes(preferred) ? preferred : defaultLocale;
+}
+
 const clerk = clerkMiddleware();
 
 export default async function middleware(
   req: NextRequest,
   event: Parameters<typeof clerk>[1]
 ) {
-  const res = await clerk(req, event);
-  if (res) return res;
-  return intl(req);
+  const clerkResponse = await clerk(req, event);
+  if (clerkResponse) return clerkResponse;
+
+  const { pathname } = req.nextUrl;
+
+  const pathnameHasLocale = locales.some(
+    (locale) =>
+      pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+
+  if (pathnameHasLocale) return NextResponse.next();
+
+  const locale = getLocale(req);
+  const url = req.nextUrl.clone();
+  url.pathname = `/${locale}${pathname}`;
+  return NextResponse.redirect(url);
 }
 
 export const config = {
