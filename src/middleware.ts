@@ -21,7 +21,7 @@ const clerk = clerkMiddleware(async (auth, req) => {
   }
 });
 
-export default async function proxy(
+export default async function middleware(
   req: NextRequest,
   event: Parameters<typeof clerk>[1]
 ) {
